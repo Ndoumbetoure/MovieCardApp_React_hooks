@@ -1,0 +1,121 @@
+
+
+.navPrincipal
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App-logo {
+  height: 14vmin;
+  pointer-events:none;
+  margin-top: 30px;
+  margin-left: 20px;
+
+} 
+
+.liStyle{
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin-top: 50px;
+}
+ 
+.liStyle li
+{
+  margin-left: 100px;
+}
+
+.liStyle li a{
+  text-decoration: none;
+  color:whitesmoke;
+  font-size: 30px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-control
+{
+  border-radius: 20px;
+  width: 350px;
+  height: 35px;
+  background-color:whitesmoke;
+  margin-left: -100px;
+  padding-left: 10px;
+}
+
+.usericon
+{
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+.usericon a
+{
+   text-decoration: none;
+   color: whitesmoke;
+   margin-right: 10px;
+}
+
+.usericon i{
+  color: red;
+}
+
+
+.divPrincipal
+{
+  display:inline-flex;
+  align-items:flex-end;
+  justify-content: space-around;
+  padding-left: 70px;
+	flex-wrap: wrap;
+  margin-top: -150px;
+  margin-bottom: 200px;
+}
+
+.divPrincipal h1
+{
+  text-align: center;
+}
+
+.divPrincipal img
+{
+   width:250px;
+   height: 300px;
+}
+
+.divDescription
+{
+    background-color: #f6f8f8;
+    box-shadow: 0 0px -20px 0 #00000026; 
+    padding:5px;
+    text-align:start;
+    width:240px;
+    height:330px;
+}
+
+.image-container {
+	position: relative;
+	transition: transform 0.2s;
+}
+
+.image-container:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+	opacity:1;
+}
+
+/* .overlay {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 0;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
+} */
