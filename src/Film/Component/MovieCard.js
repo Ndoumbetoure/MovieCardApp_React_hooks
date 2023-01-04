@@ -1,9 +1,12 @@
-import Rate from './Rating';
+import ReactStars from 'react-stars'
 
 
 const MovieCard = ({props}) =>{
 
-
+    const ratingChanged = (newRating) => {
+        console.log(newRating)
+      }
+      
 return(
     <div>
        <div className="divPrincipal">
@@ -14,8 +17,14 @@ return(
                                    <h5>{props.id}</h5>
                                    <h3>{props.title}</h3>
                                    <div><p>{props.description}</p></div>
-                                   <span>{<Rate/>}</span>
-                                   {/* <div className='overlay d-flex align-items-center justify-content-center'>Add to Favourites</div> */}
+                                   <span>
+                                   <ReactStars
+                                      count={5}
+                                       onChange={ratingChanged}
+                                       size={24} color2={'#ffd700'}
+                                       value={props.rate}
+                                       />
+                                   </span>
                             </div> 
                         </figure>
                    </div>

@@ -3,59 +3,59 @@ import {MoviesData} from "../../MoviesData";
 import AddMovies from "./AddMovie";
 import MovieCard from './MovieCard';
 import { FormControl } from 'react-bootstrap'
-import Rate from "./Rating";
+import ReactStars from "react-stars";
 
 const MovieListe = () => {
 
     const [moviesData, setMoviesData] = useState(MoviesData);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [searchRate, setSearchRate] = useState("");
-    const st = {display:'flex',alignItems: 'center', justifyContent: 'spaceEvenly', marginBottom: '100px', flexWrap: 'wrap', textAlign : 'center', paddingTop:"5px"}
+    const st = {display:'flex',alignItems: 'center', justifyContent: 'spaceEvenly', flexWrap: 'wrap', textAlign : 'center', paddingTop:"200px"}
     const dec = {display:'flex', textAlign : "center", marginTop:"-180px", paddingLeft : '550px', color:'red'}
-
-    const handleChange = (e) => {
-        let value = e.target.value
-        setSearchTerm(value);
-    };
-
-
-    const ratingChanged = (newRating) => {
-        setSearchRate(newRating);
-    }
-
-    console.log(searchRate);
-
-    const handleAdd = (addnewmovie) => {
-        setMoviesData([...moviesData, addnewmovie]);
-    }
+ 
     
-    
-    return(
+                
+            const handleAdd = (addnewmovie) => {
+                    setMoviesData([...moviesData, addnewmovie]);
+                   }
+                
 
+
+            function filterMovie(newRating) {
+                   setMoviesData(MoviesData.filter((movie) => movie.rate === newRating));
+            }
+
+
+    
+     return(
         <>
          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-            <div >
+            <div>
                 <div style={dec}>
                     <FormControl
                         type="text"
                         placeholder="Search"
                         className="mr-2"
-                         onChange={handleChange}
-                        value={searchTerm}
+                        onChange={(e) => setMoviesData(MoviesData.filter(movie => movie.title.toLowerCase().includes(e.target.value.toLowerCase()) ))}
                     />
-                    <Rate onChange={ratingChanged}/>
-                </div>
 
-                <div style={st} >
-                        {moviesData.filter((item) =>{
-                            return item.title.toLowerCase().includes(searchTerm.toLowerCase()) || item.rate >= parseInt(searchRate);
-                        }) 
-                           .map((item) => {
-                                return (<MovieCard props={item} key={item.id}/>)
-                            })}
+                    <div style={st}>
+                       <ReactStars
+                          count={5}
+                          size={24} color2={'#ffd700'}
+                          onChange={filterMovie}
+                       />
+                    </div>
+                    
+                </div>           
+                         
+                <div style={st}  >
+                    {
+                         moviesData.map((item) => 
+                         (<MovieCard props={item} key={item.id}/>)
+                         )
+                    }
                 </div>
             </div>
-            
+              
             <div>
                 <AddMovies  handleAdd = {handleAdd}/>
             </div>
